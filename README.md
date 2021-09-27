@@ -4,9 +4,9 @@
 
 ## Layout
 
-<img src="./src/assets/home-screenshot.png" />
+<img src="./src/assets/screenshots/home-screenshot.png" />
 
-<img src="./src/assets/modal-screenshot.png" />
+<img src="./src/assets/screenshots/modal-screenshot.png" />
 
 ## About
 
