@@ -1,7 +1,11 @@
+import { Header } from "./components/Header";
+import { Dashboard } from "./components/Dashboard/index";
+
 export function App() {
   return (
-    <div>Setup it's OK</div>  
+    <>
+      <Header />
+      <Dashboard />
+    </>
   );
 }
-
-export default App;
