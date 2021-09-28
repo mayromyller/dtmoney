@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="#">DT Money</a>
+  <a href="#">dtmoney</a>
 </h1>
 
 ## Layout
@@ -12,7 +12,7 @@
 
 dtmoney is a financial control application and it is possible to register and delete transactions and see the inflow and outflow balance.
 
-# Tech, Books and Libraries
+## Tech, Books and Libraries
 
 - [ReactJS](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
