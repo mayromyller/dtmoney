@@ -32,18 +32,6 @@ export function TransactionTable() {
             <td>Front-End</td>
             <td>11/10/2021</td>
           </tr>
-          <tr>
-            <td>Tailwind CSS</td>
-            <td>R$3000</td>
-            <td>Front-End</td>
-            <td>11/10/2021</td>
-          </tr>
-          <tr>
-            <td>Tailwind CSS</td>
-            <td>R$3000</td>
-            <td>Front-End</td>
-            <td>11/10/2021</td>
-          </tr>
         </tbody>
       </table>
     </S.Container>
