@@ -1,12 +1,13 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import Modal from "react-modal";
+
+import { TransactionContext } from "../../TransactionsProvider";
 
 import closeImg from "../../assets/close.svg";
 import incomeImg from "../../assets/income.svg";
 import spentImg from "../../assets/spent.svg";
 
 import * as S from "./style";
-import { api } from "../../services/api";
 
 interface ModalProps {
   isOpen: boolean;
@@ -14,8 +15,10 @@ interface ModalProps {
 }
 
 export function TransactionModal({ isOpen, onRequestClose }: ModalProps) {
+  const { createTransaction } = useContext(TransactionContext);
+
   const [title, setTitle] = useState("");
-  const [value, setValue] = useState(0);
+  const [amount, setAmount] = useState(0);
   const [type, setType] = useState("deposit");
   const [category, setCategory] = useState("");
 
@@ -24,12 +27,12 @@ export function TransactionModal({ isOpen, onRequestClose }: ModalProps) {
 
     const data = {
       title,
-      value,
+      amount,
       type,
       category,
     };
 
-    api.post("transactions", data);
+    createTransaction(data);
   }
 
   return (
@@ -60,8 +63,8 @@ export function TransactionModal({ isOpen, onRequestClose }: ModalProps) {
         <input
           type="number"
           placeholder="Valor"
-          value={value}
-          onChange={(e) => setValue(Number(e.target.value))}
+          value={amount}
+          onChange={(e) => setAmount(Number(e.target.value))}
         />
 
         <S.TypeTransactionButton>
