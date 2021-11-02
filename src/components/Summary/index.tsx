@@ -9,6 +9,25 @@ import * as S from "./style";
 export function Summary() {
   const { transactions } = useContext(TransactionContext);
 
+  const summary = transactions.reduce(
+    (acc, transaction) => {
+      if (transaction.type === "deposit") {
+        acc.deposits += transaction.amount;
+        acc.total += transaction.amount;
+      } else {
+        acc.withdraws += transaction.amount;
+        acc.total -= transaction.amount;
+      }
+
+      return acc;
+    },
+    {
+      deposits: 0,
+      withdraws: 0,
+      total: 0,
+    }
+  );
+
   return (
     <S.Container>
       <S.Box>
@@ -16,7 +35,12 @@ export function Summary() {
           <p>Entradas</p>
           <img src={incomeImg} alt="Entradas" />
         </S.BoxHeader>
-        <S.BoxValue>R$ 1000,00</S.BoxValue>
+        <S.BoxValue>
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.deposits)}
+        </S.BoxValue>
       </S.Box>
 
       <S.Box>
@@ -24,15 +48,26 @@ export function Summary() {
           <p>Saídas</p>
           <img src={spentImg} alt="Saídas" />
         </S.BoxHeader>
-        <S.BoxValue> - R$ 500,00</S.BoxValue>
+        <S.BoxValue>
+          -
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.withdraws)}
+        </S.BoxValue>
       </S.Box>
 
-      <S.Box color="green">
+      <S.Box color={`${summary.total > 0 ? "green" : "red"}`}>
         <S.BoxHeader>
           <p>Total</p>
           <img src={totalImg} alt="Total" />
         </S.BoxHeader>
-        <S.BoxValue>R$ 500,00</S.BoxValue>
+        <S.BoxValue>
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.total)}
+        </S.BoxValue>
       </S.Box>
     </S.Container>
   );

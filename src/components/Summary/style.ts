@@ -8,13 +8,29 @@ export const Container = styled.div`
 `;
 
 export const Box = styled.div`
-  background: ${(props) =>
-    props.color === "green" ? "var(--green)" : "var(--shape)"};
+  background: ${(props) => {
+    switch (props.color) {
+      case "green":
+        return "var(--green)";
+      case "red":
+        return "var(--red)";
+      default:
+        return "var(--shape)";
+    }
+  }};
   padding: 1.5rem 2rem;
   border-radius: 0.25rem;
   color: var(--text-title);
-  color: ${(props) =>
-    props.color === "green" ? "var(--shape)" : "var(--text-title)"};
+  color: ${(props) => {
+    switch (props.color) {
+      case "green":
+        return "var(--shape)";
+      case "red":
+        return "var(--shape)";
+      default:
+        return "var(--text-title)";
+    }
+  }};
 `;
 
 export const BoxHeader = styled.header`
